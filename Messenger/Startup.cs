@@ -45,8 +45,9 @@ namespace Messenger
                     Contact = new Contact { Name = "Vidar Jonsson", Email = "vidjon@gmail.com", Url = "https://github.com/vidjon" }
                 });
 
-                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-                var xmlPath = Path.Combine(basePath, "wwwroot/Messenger.xml");
+                //var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                //var xmlPath = Path.Combine(basePath, "wwwroot/Messenger.xml");
+                var xmlPath = "wwwroot/Messenger.xml";
                 c.IncludeXmlComments(xmlPath);
             });
 
