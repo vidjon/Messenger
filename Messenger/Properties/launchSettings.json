@@ -17,9 +17,9 @@
       }
     },
     "Messenger": {
-      "commandName": "api/data/seed",
+      "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/data/seed",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

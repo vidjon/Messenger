@@ -32,9 +32,6 @@ namespace Messenger
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("Messenger"));
             services.AddMvc();
 
-            //services.AddDbContext<MessengerContext>(options =>
-            //      options.UseSqlServer(Configuration.GetConnectionString("MessengerContext")));
-
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSwaggerGen(c =>
@@ -45,11 +42,11 @@ namespace Messenger
                     Title = "Messenger API",
                     Description = "A simple API to send and retrieve messages to and by users.",
                     TermsOfService = "None",
-                    Contact = new Contact { Name = "Vidar Jonsson", Email = "vidjon@gmail.com", Url = "https://twitter.com/spboyer" }
+                    Contact = new Contact { Name = "Vidar Jonsson", Email = "vidjon@gmail.com", Url = "https://github.com/vidjon" }
                 });
 
                 var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-                var xmlPath = Path.Combine(basePath, "Messenger.xml");
+                var xmlPath = Path.Combine(basePath, "wwwroot/Messenger.xml");
                 c.IncludeXmlComments(xmlPath);
             });
 

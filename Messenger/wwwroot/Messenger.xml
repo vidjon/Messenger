@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Messenger</name>
+    </assembly>
+    <members>
+        <member name="M:Messenger.Controllers.DataController.SeedData">
+             <summary>
+             Seeds the database with demo data.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Get /data/seed
+            
+             </remarks>
+             <response code="200">Returns confirmation of seeded users if successful or information to clear the database if data exists.</response>
+        </member>
+        <member name="M:Messenger.Controllers.DataController.ClearData">
+             <summary>
+             Clears the data in the database.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Get /data/clear
+            
+             </remarks>
+             <response code="200">Confirms if data is cleared.</response>
+        </member>
+        <member name="M:Messenger.Controllers.MessagesController.GetMessagesForUser(System.String,System.Int32,System.Int32)">
+             <summary>
+             Gets the messages for the current user. If the start and stop index are used (both need to be used) all messages are fetched ordered by time with start and stop index option.
+             If no indexes are selected: all unread messages are shown for the user.
+             </summary>
+             <remarks>
+             Sample requests:
+            
+                 Get /User/{userName}/Messages
+                 
+             </remarks>
+             <param name="userName"></param>
+             <returns>Messages for the user.</returns>
+             <response code="200">Returns the messages in accordance with the request.</response>
+        </member>
+        <member name="M:Messenger.Controllers.MessagesController.SendMessage(System.String,Messenger.Models.Message)">
+             <summary>
+             Sends a message from the current user to a user specificed in the message.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /User/{userName}/Messages
+                 {
+                    "toUser": "vidjon",
+                    "content": "Hello world!"
+                 }
+            
+             </remarks>
+             <param name="userName"></param>
+             <returns>A newly-created User and the route to the user.</returns>
+             <response code="201">Returns the newly-created message and the location for the sender's messages.</response>
+             <response code="400">If the toUser is null or empty or the recipient does not exist in database.</response>
+        </member>
+        <member name="M:Messenger.Controllers.MessagesController.Delete(System.String,System.Int64[])">
+             <summary>
+             Deletes specific messages for a user based on list of Ids.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Delete /User/{userName}/Messages?ids=1
+            
+             </remarks>
+             <param name="userName"></param>
+             <returns>Returns an array with the ids of the messages requested to delete and if they were deleted or not found on server.</returns>
+             <response code="200">Array with status of each of the messages that was requested to delete.</response>
+        </member>
+        <member name="M:Messenger.Controllers.UserController.Get(System.String)">
+             <summary>
+             Retrieves an existing user from the database.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Get /User/{userName}
+            
+             </remarks>
+             <param name="userName"></param>
+             <returns>Returns the User</returns>
+             <response code="200">If the user exists</response>
+             <response code="409">If a user exists with username</response>  
+        </member>
+        <member name="M:Messenger.Controllers.UserController.CreateUser(Messenger.Models.User)">
+             <summary>
+             Creates a user with a given userName, no Id needed.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /User
+                 {
+                    "userName": "vidjon",
+                 }
+            
+             </remarks>
+             <param name="user"></param>
+             <returns>A newly-created User and the route to the user.</returns>
+             <response code="201">Returns the newly-created user</response>
+             <response code="400">If the username is null or empty</response>
+             <response code="409">If a user exists with username</response>  
+        </member>
+    </members>
+</doc>
